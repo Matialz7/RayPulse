@@ -10,8 +10,8 @@ DEFAULT_ACCESS_LOG="/usr/local/x-ui/access.log"
 DEFAULT_HOST="0.0.0.0"
 DEFAULT_PORT="443"
 DEFAULT_TLS="auto"
-DEFAULT_CERT="/root/certs/vip1.matialz.click.fullchain.pem"
-DEFAULT_KEY="/root/certs/vip1.matialz.click.key"
+DEFAULT_CERT="/root/certs/fullchain.pem"
+DEFAULT_KEY="/root/certs/privkey.pem"
 
 if [ "${EUID}" -ne 0 ]; then
   echo "Please run as root."
