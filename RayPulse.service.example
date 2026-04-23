@@ -1,0 +1,21 @@
+[Unit]
+Description=RayPulse
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/RayPulse
+ExecStart=/usr/bin/python3 /opt/RayPulse/raypulse.py
+Restart=always
+RestartSec=3
+User=root
+Environment=RAYPULSE_HOST=0.0.0.0
+Environment=RAYPULSE_PORT=443
+Environment=RAYPULSE_TLS=auto
+Environment=RAYPULSE_TLS_CERT=/root/certs/vip1.matialz.click.fullchain.pem
+Environment=RAYPULSE_TLS_KEY=/root/certs/vip1.matialz.click.key
+Environment=RAYPULSE_METRICS_URL=http://127.0.0.1:11112/debug/vars
+Environment=RAYPULSE_ACCESS_LOG=/usr/local/x-ui/access.log
+
+[Install]
+WantedBy=multi-user.target
