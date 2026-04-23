@@ -22,8 +22,8 @@ ACCESS_LOG = Path(os.environ.get("RAYPULSE_ACCESS_LOG", "/usr/local/x-ui/access.
 HOST = os.environ.get("RAYPULSE_HOST", "0.0.0.0")
 PORT = int(os.environ.get("RAYPULSE_PORT", "443"))
 
-TLS_CERT = os.environ.get("RAYPULSE_TLS_CERT", "/root/certs/vip1.matialz.click.fullchain.pem")
-TLS_KEY = os.environ.get("RAYPULSE_TLS_KEY", "/root/certs/vip1.matialz.click.key")
+TLS_CERT = os.environ.get("RAYPULSE_TLS_CERT", "/root/certs/fullchain.pem")
+TLS_KEY = os.environ.get("RAYPULSE_TLS_KEY", "/root/certs/privkey.pem")
 ENABLE_TLS = os.environ.get("RAYPULSE_TLS", "auto").lower()
 
 RECENT_LINES = int(os.environ.get("RAYPULSE_RECENT_LINES", "8000"))
