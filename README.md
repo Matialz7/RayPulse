@@ -3,6 +3,7 @@
 RayPulse is a lightweight web dashboard for Xray outbound monitoring.
 
 It shows:
+
 - outbound delay and health
 - best outbound now
 - most stable outbounds
@@ -10,44 +11,56 @@ It shows:
 - outbound traffic if stats are exposed in `debug/vars`
 
 ## Features
+
 - single-file Python app
 - systemd service install
 - optional HTTPS with your own certificate
 - interactive installer
-- chart keeps previous delay samples even if an outbound goes down
+- online users based on access log
+- 30-minute delay charts
+- outbound traffic table
+- live health view
 
-## Quick install from GitHub
-After you upload this repo to GitHub, users will be able to install it with a single command like this:
+## Screenshot
 
-```bash
-bash <(curl -Ls https://raw.githubusercontent.com/YOUR_USERNAME/RayPulse/main/install.sh)
-```
+![RayPulse Dashboard](screenshots/1.png)
 
-## Manual install from ZIP
-1. Download the ZIP from GitHub.
-2. Extract it on the server.
-3. Enter the extracted folder.
-4. Run:
+## Quick install
 
 ```bash
+bash <(curl -Ls https://raw.githubusercontent.com/Matialz7/RayPulse/main/install.sh)
+Install from ZIP
+Download the repository ZIP
+Extract it on your server
+Run:
 chmod +x install.sh
 ./install.sh
-```
+What the installer asks for
 
-## Files
-- `raypulse.py` - main app
-- `install.sh` - interactive installer
-- `uninstall.sh` - remove service and files
-- `RayPulse.service.example` - example systemd service
+The installer asks for:
 
-## Default paths
-- Metrics URL: `http://127.0.0.1:11112/debug/vars`
-- Access log: `/usr/local/x-ui/access.log`
+Metrics URL
+Access log path
+Bind host
+Bind port
+TLS mode
+TLS certificate path
+TLS key path
+Default paths
+Metrics URL: http://127.0.0.1:11112/debug/vars
+Access log: /usr/local/x-ui/access.log
+Service management
+systemctl status RayPulse
+systemctl restart RayPulse
+systemctl stop RayPulse
+journalctl -u RayPulse -f
+Uninstall
+chmod +x uninstall.sh
+./uninstall.sh
+Notes
+Port 443 must be free before using RayPulse on it.
+If you use a CDN, make sure your origin is reachable and your TLS setup is correct.
+Outbound traffic works only if Xray exposes the needed stats in debug/vars.
+License
 
-## Notes
-- Port `443` must be free if you want to use it.
-- If your domain is behind a CDN, make sure the origin can still reach your server.
-- Traffic values stay zero if Xray does not expose outbound stats in `debug/vars`.
-
-## License
 MIT
